@@ -1,0 +1,27 @@
+---
+- name: (hw_provisioning) Hardware Provisioning
+  hosts: ubuntu
+  tasks:
+    - name: Ensure NANO is Installed
+      apt:
+        name: nano
+        state: latest
+
+    - name: Install Docker and Required Dependencies
+      apt:
+        name: {{ item.service }}
+        state: latest
+      loop:
+        - {service: docker.io}
+        - {service: docker-compose}
+
+    - name: Create Service Config Directories
+      file:
+        path: '~/appdata/{{ item.service }}'
+        state: directory
+        mode: '777'
+      loop:
+        - {service: heimdall/config}
+        - {service: jellyfin/config}
+        - {service: jellyfin/tvshows}
+        - {service: jellyfin/movies}
