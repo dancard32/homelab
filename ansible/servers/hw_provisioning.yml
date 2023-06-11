@@ -9,7 +9,7 @@
 
     - name: Install Docker and Required Dependencies
       apt:
-        name: {{ item.service }}
+        name: "{{ item.service }}"
         state: latest
       loop:
         - {service: docker.io}
@@ -17,7 +17,7 @@
 
     - name: Create Service Config Directories
       file:
-        path: '~/appdata/{{ item.service }}'
+        path: "~/appdata/{{ item.service }}"
         state: directory
         mode: '777'
       loop:
