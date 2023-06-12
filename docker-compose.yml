@@ -24,9 +24,104 @@ services:
       - TZ=America/Chicago
       - JELLYFIN_PublishedServerUrl=192.168.0.5 #optional
     volumes:
-      - /path/to/library:/config
-      - /path/to/tvseries:/data/tvshows
-      - /path/to/movies:/data/movies
+      - ~/appdata/jellyin/library:/config
+      - ~/appdata/jellyin/tvseries:/data/tvshows
+      - ~/appdata/jellyin/movies:/data/movies
     ports:
       - 8096:8096
     restart: unless-stopped
+
+  yacht:
+    image: selfhostedpro/yacht
+    container_name: yacht
+    volumes:
+      - ~/appdata/yacht:/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8000:8000
+    restart: unless-stopped
+
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ~/appdata/deluge/config:/config
+      - ~/Downloads/:/downloads
+    ports:
+      - 8112:8112
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ~/appdata/radarr/config:/config
+      - ~/appdata/jellyin/movies
+      - ~/Downloads:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ~/appdata/sonarr/config:/config
+      - ~/appdata/jellyin/tvseries:/tv
+      - ~/Downloads:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  #pihole:
+  #  image: pihole/pihole:latest
+  #  container_name: pihole
+  #  environment:
+  #    TZ: America/Chicago
+  #    WEBPASSWORD: asdf
+  #  volumes:
+  #    - ~/appdata/pi-hole/:/etc/pihole
+  #    - ~/appdata/pi-hole/dns-masq.d/:/etc/dnsmasq.d
+  #
+  #  ports:
+  #    - 53:53/tcp
+  #    - 53:53/udp
+  #   - 8081:80/tcp
+
+  #  restart: unless-stopped
+
+  homeassistant:
+    image: lscr.io/linuxserver/homeassistant:latest
+    container_name: homeassistant
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ~/appdata/homeassistant:/config
+    ports:
+      - 8123:8123
+    restart: unless-stopped
+
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
+    container_name: uptime-kuma
+    volumes:
+      - ~/appdata/uptime-kuma:/app/data
+    ports:
+      - 3001:3001
+    restart: always

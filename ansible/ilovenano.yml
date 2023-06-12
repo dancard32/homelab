@@ -1,8 +1,0 @@
----
-- name: Iluvnano
-  hosts: ubuntu
-  tasks:
-    - name: Ensure nano is there
-      apt:
-        name: nano
-        state: latest
