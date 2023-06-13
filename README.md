@@ -1,6 +1,8 @@
 # homelab
 An overview of my homelab personal project and all the services that I have on my home server!
 
+![Homelab Cover](images/homelab-cover.PNG)
+
 ## Table of Contents
 - [Setting-Up Homelab](#setting-up-homelab)
     - [Pre-Requisites](#pre-requisites)
@@ -32,6 +34,7 @@ From applications list open Virtual Machine Manager and follow the following ste
     - 256Gb of storage of available 1Tb
 4. Choose the FDQN name to be `proxmox.local`
 5. After reboot on host computer navigate to the listed browser url and login with user `root` using the password you created
+    - At this point the VM can be converted to a template, step 6 to be repeated for _each_ VM
 6. To upload ISO Images navigate to local(proxmox) > ISO Images > upload and install VM's
     - Debian/Ubuntu systems install `apt-get install -y qemu-guest-agent`
     - Redhat based systems install `yum install -y qemu-guest-agent`
@@ -46,3 +49,4 @@ From applications list open Virtual Machine Manager and follow the following ste
 
     `systemctl enable qemu-guest-agent`
 
+    With this completed, restart/reboot the VM and under proxmox summary, you should see the VM's IP address listed and available for remote SSH

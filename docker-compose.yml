@@ -175,3 +175,12 @@ services:
   #    - '$GITLAB_HOME/logs:/var/log/gitlab'
   #    - '$GITLAB_HOME/data:/var/opt/gitlab'
   #  shm_size: '256m'
+
+  #image: nginx
+  #  volumes:
+  #  - ./templates:/etc/nginx/templates
+  #  ports:
+  #  - "8080:80"
+  #  environment:
+  #  - NGINX_HOST=foobar.com
+  #  - NGINX_PORT=80
