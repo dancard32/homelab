@@ -12,6 +12,13 @@
       name: "{{ item }}"
     with_items:
       - net-tools
+      - lm-sensors # Used to monitor computer temperatures
+      - powertop # `sudo powertop` displays metrics about computer usage
+
+# Set-up Homelab Tools
+  # sudo apt-get install lm-sensors
+  # sudo sensors-detect
+  # sensors
 
 # Proxmox dependencies
   - name: Install Proxmox Dependencies
@@ -107,6 +114,7 @@
       - pi-hole
       - pi-hole/dns-masq.d
       - homeassistant
+      - portainer
 
 
   #- name: Homelab - Adjusting for Docker Service Start-up

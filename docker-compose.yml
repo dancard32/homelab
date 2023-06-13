@@ -32,7 +32,7 @@ services:
     restart: unless-stopped
 
   yacht:
-    image: selfhostedpro/yacht
+    image: selfhostedpro/yacht:latest
     container_name: yacht
     volumes:
       - ~/appdata/yacht:/config
@@ -66,7 +66,7 @@ services:
       - TZ=America/Chicago
     volumes:
       - ~/appdata/radarr/config:/config
-      - ~/appdata/jellyin/movies
+      - ~/appdata/jellyin/movies:/movies
       - ~/Downloads:/downloads
     ports:
       - 7878:7878
@@ -87,6 +87,38 @@ services:
       - 8989:8989
     restart: unless-stopped
 
+  homeassistant:
+    image: lscr.io/linuxserver/homeassistant
+    container_name: homeassistant
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ~/appdata/homeassistant:/config
+    ports:
+      - 8123:8123
+    restart: unless-stopped
+
+  uptime-kuma:
+    image: louislam/uptime-kuma:alpine
+    container_name: uptime-kuma
+    volumes:
+      - ~/appdata/uptime-kuma:/app/data
+    ports:
+      - 3001:3001
+    restart: unless-stopped
+
+  portainer:
+    image: portainer/portainer-ce:alpine
+    container_name: portainer
+    volumes:
+      - ~/appdata/portainer:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 9443:9443
+    restart: unless-stopped
+
   #pihole:
   #  image: pihole/pihole:latest
   #  container_name: pihole
@@ -104,24 +136,42 @@ services:
 
   #  restart: unless-stopped
 
-  homeassistant:
-    image: lscr.io/linuxserver/homeassistant:latest
-    container_name: homeassistant
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=America/Chicago
-    volumes:
-      - ~/appdata/homeassistant:/config
-    ports:
-      - 8123:8123
-    restart: unless-stopped
+  #nut-upsd:
+  #  image: instantlinux/nut-upsd
+  #  ports:
+  #    - 3493:3493
+  #  environment:
+  #    - SERIAL=abcdef123456
+  #  secrets:
+  #    - nut-upsd-password
+  #  devices:
+  #    - /dev/usb/hiddev0:/dev/usb/hiddev0
+  #  privileged: true
+  #  restart: unless-stopped
 
-  uptime-kuma:
-    image: louislam/uptime-kuma:latest
-    container_name: uptime-kuma
-    volumes:
-      - ~/appdata/uptime-kuma:/app/data
-    ports:
-      - 3001:3001
-    restart: always
+  #cloudflare-ddns:
+  #  image: oznu/cloudflare-ddns:latest
+  #  restart: always
+  #  environment:
+  #    - API_KEY=xxxxxxx
+  #    - ZONE=example.com
+  #    - SUBDOMAIN=subdomain
+  #    - PROXIED=false
+
+  #gitlab:
+  #  image: 'gitlab/gitlab-ee:latest'
+  #  restart: always
+  #  hostname: 'gitlab.example.com'
+  #  environment:
+  #    GITLAB_OMNIBUS_CONFIG: |
+  #      external_url 'https://gitlab.example.com'
+  # Add any other gitlab.rb configuration here, each on its own line
+  #  ports:
+  #    - '80:80'
+  #    - '443:443'
+  #    - '22:22'
+  #  volumes:
+  #    - '$GITLAB_HOME/config:/etc/gitlab'
+  #    - '$GITLAB_HOME/logs:/var/log/gitlab'
+  #    - '$GITLAB_HOME/data:/var/opt/gitlab'
+  #  shm_size: '256m'
