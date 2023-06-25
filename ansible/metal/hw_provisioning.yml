@@ -6,7 +6,7 @@
   tasks:
 
 # General Homelab Tools
-  - name: Install General Tools
+  - name: (APT) Install General Tools
     become: true
     apt:
       name: "{{ item }}"
@@ -15,6 +15,12 @@
       - lm-sensors # Used to monitor computer temperatures
       - powertop # `sudo powertop` displays metrics about computer usage
       - openssh-server # To allow remote SSH
+
+# Snap installs
+  - name: (SNAP) Install General Tools
+    community.general.snap:
+      name:
+        - kompose
 
 # Set-up Homelab Tools
   # sudo apt-get install lm-sensors
@@ -84,11 +90,11 @@
     tags:
       - docker
 
-  - name: Docker - Install docker-compose
-    get_url:
-      url : https://github.com/docker/compose/releases/download/1.25.1-rc1/docker-compose-Linux-x86_64
-      dest: /usr/local/bin/docker-compose
-      mode: 'u+x,g+x'
+  #- name: Docker - Install docker-compose
+  #  get_url:
+  #    url : https://github.com/docker/compose/releases/download/1.25.1-rc1/docker-compose-Linux-x86_64
+  #    dest: /usr/local/bin/docker-compose
+  #    mode: 'u+x,g+x'
 
   - name: Docker - Create $HOME/appdata directory
     file:
@@ -107,8 +113,9 @@
     with_items:
       - heimdall/config
       - jellyfin/library
-      - jellyfin/tvshows
-      - yacht
+      - jellyfin/movies
+      - jellyfin/tvseries
+      - yacht/config
       - deluge/config
       - radarr/config
       - sonarr/config
@@ -116,6 +123,8 @@
       - pi-hole/dns-masq.d
       - homeassistant
       - portainer
+      - guacamole
+      - dashy
 
 
   #- name: Homelab - Adjusting for Docker Service Start-up
