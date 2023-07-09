@@ -1,0 +1,7 @@
+---
+
+  - name: Provisioning Proxmox
+    apt:
+      name: "{{ item }}"
+    with_items:
+      - python3-pip

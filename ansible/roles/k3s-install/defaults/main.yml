@@ -1,2 +1,5 @@
 ---
 k3s_server_location: /var/lib/rancher/k3s
+pip_version: "23.1.*"
+pip_get_pip_version: "latest"
+pip_executable: "pip"

@@ -4,6 +4,6 @@
   import_tasks: server.yml
   when: inventory_hostname in groups['servers']
 
-- name: Install k3s on nodes
-  import_tasks: node.yml
-  when: inventory_hostname in groups['nodes']
+- name: Start VM
+  import_tasks: start_vm.yml
+  when: inventory_hostname in groups['agents']

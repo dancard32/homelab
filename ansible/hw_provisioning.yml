@@ -5,8 +5,9 @@
   become: true
   connection: local
   roles:
-    - apt-installs
-    - snap-installs
+    - installs-apt
+    - installs-snap
+    - installs-pip
     - metal
 
 - name: Install Docker on Bare Metal and Cluster

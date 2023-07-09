@@ -1,17 +1,30 @@
 ---
 
-- name: Copy K3s service file
+- name: Clean previous runs of k3s-init
+  systemd:
+    name: k3s-init
+    state: stopped
+  failed_when: false
+
+- name: Clean previous runs of k3s-init
+  command: systemctl reset-failed k3s-init
+  failed_when: false
+  changed_when: false
+  args:
+    warn: false  # The ansible systemd module does not support reset-failed
+
+- name: Copy K3s server template file
   register: k3s_service
   template:
     src: "k3s.server.j2"
-    dest: "{{ systemd_dir }}/k3s.service"
+    dest: "{{ systemd_dir }}/k3s-server.service"
     owner: root
     group: root
     mode: 0644
 
-- name: Enable and check K3s service
+- name: Enable and check K3s-server service
   systemd:
-    name: k3s
+    name: k3s-server
     daemon_reload: yes
     state: restarted
     enabled: yes
@@ -62,7 +75,7 @@
 - name: Replace https://localhost:6443 by https://master-ip:6443
   command: >-
     k3s kubectl config set-cluster default
-      --server=https://{{ master_ip }}:6443
+      --server=https://{{ server_ip }}:6443
       --kubeconfig ~{{ ansible_user }}/.kube/config
   changed_when: true
 

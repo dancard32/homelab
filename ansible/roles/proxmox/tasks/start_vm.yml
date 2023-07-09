@@ -1,0 +1,8 @@
+- name: Start VM
+  community.general.proxmox_kvm:
+    api_user: root@pam
+    api_password: secret
+    api_host: 192.168.122.20
+    name: spynal
+    node: proxmox
+    state: started
