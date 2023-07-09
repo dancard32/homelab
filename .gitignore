@@ -1,3 +1,4 @@
 .vscode
 .secrets/
 .env
+.ansible/inventory.ini

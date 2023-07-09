@@ -38,7 +38,7 @@ From applications list open Virtual Machine Manager and follow the following ste
 5. After reboot on host computer navigate to the listed browser url and login with user `root` using the password you created
     - At this point the VM can be converted to a template, step 6 to be repeated for _each_ VM
 6. To upload ISO Images navigate to local(proxmox) > ISO Images > upload and install VM's
-    - Debian/Ubuntu systems install `apt-get install -y qemu-guest-agent`
+    - Debian/Ubuntu systems install `sudo apt-get install -y qemu-guest-agent`
     - Redhat based systems install `yum install -y qemu-guest-agent`
 
     Depending on the distribution, the guest agent might not start automatically after the installation.

@@ -1,0 +1,7 @@
+---
+
+# Snap installs
+  - name: (SNAP) Install General Tools
+    community.general.snap:
+      name:
+        - kompose

@@ -194,9 +194,6 @@ services:
     image: lissy93/dashy
     container_name: Dashy
     volumes:
-      #- type: bind
-      #  source: ~/appdata/dashy/config
-      #  target: /app/public/
       - type: bind
         source: ~/appdata/dashy/config.yml
         target: /app/public/conf.yml
@@ -216,6 +213,29 @@ services:
       start_period: 40s
     restart: unless-stopped
 
+  gitlab:
+    image: 'gitlab/gitlab-ee:latest'
+    hostname: 'gitlab.dancard32.com'
+    container_name: gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.example.com'
+    # Add any other gitlab.rb configuration here, each on its own line
+    networks:
+      - network
+    ports:
+      - '80:80'
+      - '443:443'
+      - '22:22'
+    volumes:
+      - '$GITLAB_HOME/config:/etc/gitlab'
+      - '$GITLAB_HOME/logs:/var/log/gitlab'
+      - '$GITLAB_HOME/data:/var/opt/gitlab'
+    shm_size: '256m'
+
+    restart: unless-stopped
+
+# Statically setting the IP Gateway to prevent changing IP for cloudflare
 networks:
   network:
     driver: bridge
@@ -224,10 +244,6 @@ networks:
         - subnet: 172.21.255.0/24
           gateway: 172.21.255.1
 
-#secrets:
-#  cloudflare_tunnel_token:
-#    external: true
-#    file: ./.secrets/cloudflare-token.txt
 
   #pihole:
   #  image: pihole/pihole:latest
@@ -267,24 +283,6 @@ networks:
   #    - ZONE=example.com
   #    - SUBDOMAIN=subdomain
   #    - PROXIED=false
-
-  #gitlab:
-  #  image: 'gitlab/gitlab-ee:latest'
-  #  restart: always
-  #  hostname: 'gitlab.example.com'
-  #  environment:
-  #    GITLAB_OMNIBUS_CONFIG: |
-  #      external_url 'https://gitlab.example.com'
-  # Add any other gitlab.rb configuration here, each on its own line
-  #  ports:
-  #    - '80:80'
-  #    - '443:443'
-  #    - '22:22'
-  #  volumes:
-  #    - '$GITLAB_HOME/config:/etc/gitlab'
-  #    - '$GITLAB_HOME/logs:/var/log/gitlab'
-  #    - '$GITLAB_HOME/data:/var/opt/gitlab'
-  #  shm_size: '256m'
 
   #image: nginx
   #  volumes:

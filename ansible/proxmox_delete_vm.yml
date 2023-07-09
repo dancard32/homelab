@@ -1,0 +1,36 @@
+---
+
+- name: Delete Proxmox VM's
+  hosts: proxmox
+  vars_prompt:
+    - name: password
+      prompt: What is your proxmox password?
+
+    - name: vm_names_csv
+      prompt: "Please specify the server names, separated by commas (NO SPACES)"
+      private: false
+  tasks:
+    - set_fact:
+        vm_names: "{{ vm_names_csv.split(',') }}"
+
+    - name: Stop VM with force
+      proxmox_kvm:
+        api_user    : root@pam
+        api_password: "{{ password }}"
+        api_host    : 192.168.122.20
+        name        : "{{ item }}"
+        node        : proxmox
+        state       : stopped
+        force       : yes
+        timeout: 50
+      loop: "{{ vm_names }}"
+
+    - name: Remove VM
+      proxmox_kvm:
+        api_user    : root@pam
+        api_password: "{{ password }}"
+        api_host    : 192.168.122.20
+        name        : "{{ item }}"
+        node        : proxmox
+        state       : absent
+      loop: "{{ vm_names }}"

@@ -1,8 +1,0 @@
----
-- name: (hw_provisioning) Hardware Provisioning
-  hosts: ubuntu
-  tasks:
-    - name: Ensure NANO is Installed
-      apt:
-        name: nano
-        state: latest

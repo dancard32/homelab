@@ -1,36 +1,4 @@
 ---
-- name: (hw_provisioning) Hardware Provisioning
-  hosts: localhost
-  become: true
-  connection: local
-  tasks:
-
-# General Homelab Tools
-  - name: (APT) Install General Tools
-    become: true
-    apt:
-      name: "{{ item }}"
-    with_items:
-      - net-tools
-      - lm-sensors # Used to monitor computer temperatures
-      - powertop # `sudo powertop` displays metrics about computer usage
-      - openssh-server # To allow remote SSH
-
-# Snap installs
-  - name: (SNAP) Install General Tools
-    community.general.snap:
-      name:
-        - kompose
-
-# Set-up Homelab Tools
-  # sudo apt-get install lm-sensors
-  # sudo sensors-detect
-  # sensors
-
-# Proxmox dependencies
-  - name: Install Proxmox Dependencies
-    apt:
-      name: virt-manager
 
 # Docker Install
   - name: Docker - Install docker packages
@@ -96,40 +64,8 @@
   #    dest: /usr/local/bin/docker-compose
   #    mode: 'u+x,g+x'
 
-  - name: Docker - Create $HOME/appdata directory
-    file:
-      path: "~/appdata"
-      state: directory
-      mode: '777'
-    become: false
-
-  - name: Docker - Create service config directories
-    file:
-      path: "~/appdata/{{ item }}"
-      state: directory
-      mode: '777'
-    become: false
-
-    with_items:
-      - heimdall/config
-      - jellyfin/library
-      - jellyfin/movies
-      - jellyfin/tvseries
-      - yacht/config
-      - deluge/config
-      - radarr/config
-      - sonarr/config
-      - pi-hole
-      - pi-hole/dns-masq.d
-      - homeassistant
-      - portainer
-      - guacamole
-      - dashy
-
-
   #- name: Homelab - Adjusting for Docker Service Start-up
   #  systemd:
   #    name: systemd-resolved
   #    state: stopped
   #    enabled: false
-

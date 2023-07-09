@@ -1,0 +1,31 @@
+---
+
+  - name: Docker - Create $HOME/appdata directory
+    file:
+      path: "~/appdata"
+      state: directory
+      mode: '777'
+    become: false
+
+  - name: Docker - Create service config directories
+    file:
+      path: "~/appdata/{{ item }}"
+      state: directory
+      mode: '777'
+    become: false
+
+    with_items:
+      - heimdall/config
+      - jellyfin/library
+      - jellyfin/movies
+      - jellyfin/tvseries
+      - yacht/config
+      - deluge/config
+      - radarr/config
+      - sonarr/config
+      - pi-hole
+      - pi-hole/dns-masq.d
+      - homeassistant
+      - portainer
+      - guacamole
+      - dashy
