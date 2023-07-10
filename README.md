@@ -1,72 +1,103 @@
-# homelab
-An overview of my homelab personal project and all the services that I have on my home server!
+# dancard32/homelab
+
+<div align="center">
+
+[![Dan Card](https://img.shields.io/static/v1?label=Dan32Card&message=profile&color=blue&logo=github)](https://github.com/dancard32)
+[![stars - homelab](https://img.shields.io/github/stars/dancard32/homelab?style=social)](https://github.com/DanCard32/homelab)
+[![forks - homelab](https://img.shields.io/github/forks/dancard32/homelab?style=social)](https://github.com/dancard32/homelab)
+[![GitHub tag](https://img.shields.io/github/tag/dancard32/homelab?include_prereleases=&sort=semver)](https://github.com/DanCard32/homelab/releases/)
+[![issues - homelab](https://img.shields.io/github/issues/dancard32/homelab)](https://github.com/dancard32/homelab/issues)
+</div>
+
+Welcome to my homelab server repository! This project serves as a personal exploration of DevSecOps principles and best software engineering practices, with the aim of creating a robust environment for experimentation and learning. I am excited to share this repository with the community, inviting others to run and learn alongside me. Together, we can dive into the world of server infrastructure, improve our skills, and foster a collaborative environment of knowledge sharing.
 
 ![Homelab Cover](images/homelab-cover.PNG)
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/dancard32)
+
 ## Table of Contents
-- [Setting-Up Homelab](#setting-up-homelab)
-    - [Pre-Requisites](#pre-requisites)
-    - [Installing Proxmox Virtual Environment (VE)](#installing-proxmox-virtual-environment-ve)
+- [Installation](#installation)
+    - [Building the Homelab](#building-the-homelab)
+    - [Bare Metal Provisioning](#bare-metal-provisioning)
+    - [Proxmox Set-Up](#proxmox-set-up)
+    - [Kubernetes](#kubernetes)
+- [Usage](#usage)
+- [Features](#features)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+- [Contact or Support](#contact-or-support)
 
-- [References]()
 
----
+## Installation
+To get started with the homelab server, first clone this repository (`git clone  https://github.com/dancard32/homelab.git`) and follow the steps below:
 
-## Setting-Up Homelab
+### Building the Homelab
+The first step to setting up the homelab - is building your homelab! I would recommend firstly getting a main computer server up and running and running your needed services and making sure the VM's are working so that you can test your development environment.
 
-### **Pre-Requisites**
-From a fresh install, the host computer requires
+After this point I would expand to suit your needs and add switches, Network Interface Cards (NICs), Wireless Access Points (WAPs), Network Attached Storage (NAS) when best suited.
 
-- `vim` install via `sudo apt install -y vim`
-- `git` with ubuntu install via `sudo apt install -y git`
-- `pip` install via `sudo apt install -y python3-pip`
-- `ansible` install via `sudo python3 -m pip install -y ansible`
-    - Add `PATH=$PATH:$HOME/.local/bin` to `~/.bashrc` and `source`
-    - Add linting for syntax highlighting via `sudo pip install ansible-lint`
-    - Create `/etc/ansible/hosts` file and directory and populate with target installs
+For a detailed description of my set-up (If you wish to repeat it) can be found under the [building instructions](markdown/building.md)
 
-### **Installing Proxmox Virtual Environment (VE)**
-From applications list open Virtual Machine Manager and follow the following steps:
-1. From file choose Create VM
-2. Use Proxmox `.iso` image
-    - Choose `Debian 10`
-3. Decide the resources allowed for Proxmox, I used
-    - 10Gb of RAM of my available 16Gb
-    - 6 of my 8 allowable Cores
-    - 256Gb of storage of available 1Tb
-4. Choose the FDQN name to be `proxmox.local`
-5. After reboot on host computer navigate to the listed browser url and login with user `root` using the password you created
-    - At this point the VM can be converted to a template, step 6 to be repeated for _each_ VM
-6. To upload ISO Images navigate to local(proxmox) > ISO Images > upload and install VM's
-    - Debian/Ubuntu systems install `sudo apt-get install -y qemu-guest-agent`
-    - Redhat based systems install `yum install -y qemu-guest-agent`
+### Bare Metal Provisioning
+Prior to the deployment of VM's, docker containers, kubernetes clustering is the initial software dependencies set-up of the main server computer. This set-up is what I have labeled [bare metal provisioning](markdown/provisioning.md)
 
-    Depending on the distribution, the guest agent might not start automatically after the installation.
+### Proxmox Set-Up
+Setting up Proxmox and the automation of VM cloning can be found in this [reference document](markdown/proxmox.md)
 
-    Start it either directly with
+### Kubernetes
+Steps to initialize and deploy a kubernetes cluster can be found in the following [reference document](markdown/k3s.md)
 
-    `systemctl start qemu-guest-agent`
+## Usage
+In my personal own use case, I have been mainly using my homelab as a hands-on platform to dive deeper into the principles of DevSecOps, gain practical expertise in IT automation through Ansible, and explore the intricate convergence of software engineering and hardware integration such as:
 
-    Then enable the service to autostart (permanently) if not auto started with
+1. **Learning and Skill Development**: Homelabs offer an ideal environment for hands-on learning, enabling experimentation, software testing, and configuration practice.
+2. **DevOps and Infrastructure Testing**: Homelabs simulate production environments, allowing exploration of deployment strategies, orchestration tools, containerization, and automation frameworks.
+3. **Software Development and Testing**: Homelabs provide isolated spaces to build and test applications, mimicking production environments for debugging, testing, and code iteration.
+4. **Virtualization and Server Consolidation**: Homelabs optimize hardware resources by running multiple VMs or containers, consolidating services onto a single server for OS and network configuration experiments.
+5. **Data Storage and Backup**: Homelabs facilitate personal data storage and backup solutions, including NAS setup, backup strategies, and data replication exploration.
+6. **Home Automation and IoT**: Homelabs serve as centralized hubs for managing and integrating IoT devices, enabling home automation systems and experimentation with smart technologies.
+7. **Cybersecurity and Penetration Testing**: Homelabs offer controlled environments for exploring cybersecurity concepts, conducting penetration testing, and strengthening defensive strategies.
+8. **Media Streaming and Entertainment**: Homelabs support media servers, enabling streaming, accessing media files across devices, and creating personalized media centers with transcoding and streaming technologies.
 
-    `systemctl enable qemu-guest-agent`
+## Features
 
-    With this completed, restart/reboot the VM and under proxmox summary, you should see the VM's IP address listed and available for remote SSH
+- **Hardware Provisioning with Ansible**
+- **VM Cloning Managed with Ansible**
+- **Kubernetes Cluster Managed with Ansible**
+- **Docker Compose Service Management**
+- **Bill of Materials**
+- **STL Files for Homelab Shelves**
 
-## References
-A big thank you for all the help from sites like Stack Overflow, Github, YouTube, and for people that offer help just like you!
 
-Below is a list of all the references if you would like to know how I was able to build my homelab and its services:
+## Documentation
+No documentation yet, may have a wiki page for this project - not sure how useful it would be
 
-- **Cloudflare Tunneling/Guacamole/Exposing Homelab**
-    - [Meet Guacamole, Your Remote Access Gateway](https://www.youtube.com/watch?v=LWdxhZyHT_8)
-    - [guacamole Remote Desktop Multiple Computers](https://www.youtube.com/results?search_query=guacamole+remote+desktop+multiple+computers)
-- **General Homelab Services**
-    - [What's On My Home Server? Storage, OS, Media, Provisioning, Automation](https://www.youtube.com/watch?v=f5jNJDaztqk&pp=ygULaG9tZWxhYiB2cG4%3D)
-    - [Virtualize Ubuntu Server with Proxmox VE](https://www.youtube.com/watch?v=YR9SNDD8WB4)
-    - [Proxmox VE Install and Setup Tutorial](https://www.youtube.com/watch?v=7OVaWaqO2aU&themeRefresh=1)
-    - [My Proxmox Basic Initial Setup](https://www.youtube.com/watch?v=5axVd19Jris)
-    - [How To Access Your PCs and Servers from Anywhere Using Guacamole and Cloudflare Tunnels](https://www.youtube.com/watch?v=tg1CbMEzCsc&pp=ygUUY2xvdWRmbGFyZSBndWFjYW1vbGU%3D)
-    - [HomeLab Services Tour Late 2021 - What am I Self-Hosting in my HomeLab?](https://www.youtube.com/watch?v=IE5y2_S8S8U)
-    - [EXPOSE your home network to the INTERNET!! (it's safe)](https://www.youtube.com/watch?v=ey4u7OUAF3c)
-    - [access EVERYTHING from your web browser!! (Linux and Windows Desktop, SSH) // Guacamole Install ](https://www.youtube.com/watch?v=gsvS2M5knOw&pp=ygUgaG93IHRvIGluc3RhbGwgZ3VhY2Ftb2xlIGhvbWVsYWI%3D)
+## Contributing
+Feel free to contribute to this project! Clone/Fork this repository and if you come across an issue feel free to open an issue (using the Bug or Feature request templates). If you have any changes and would like to merge into the main branch create a merge review and I will look over when I have time!
+
+## License
+No license, I would like to keep this is open-source, I just wish for some acknowledgement if you heavily use this codebase in your work :)
+
+_p.s. If you somehow manage to make a significant amount of money you should..._
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/dancard32) _hehe_
+
+## Acknowledgements
+Show appreciation for and acknowledge the incredible help from the following community content creators:
+- Techno Tim - [Github](https://github.com/timothystewart6), [YouTube](https://www.youtube.com/@TechnoTim)
+- Jeff Geerling - [Github](https://github.com/geerlingguy), [YouTube](https://www.youtube.com/@JeffGeerling)
+- Network Chuck - [Github](https://github.com/theNetworkChuck), [YouTube](https://www.youtube.com/@NetworkChuck)
+- [r/homelab](https://www.reddit.com/r/homelab/)
+- [r/minilab](https://www.reddit.com/r/minilab/)
+- [Ask Ubuntu](https://askubuntu.com/)
+
+## Contact or Support
+If you are running into any issues first try forums to see if it is hardware specific - I doubt that I will enough time to directly respond to all invoices. If you are unable to pin-point an easy fix please open an issue as either a bug or feature for me to see. If it is security related, please email me at dcard@umich.edu
+
+
+## Frequently Asked Questions (FAQ)
+Here is a list of commonly asked questions:
+
+- **Do you have any references to how you learned everything about homelabs?** Yes, and it has been documented [here in references](markdown/references.md)
