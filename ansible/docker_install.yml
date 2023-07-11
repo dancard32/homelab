@@ -1,0 +1,8 @@
+---
+
+- name: Provision Docker
+  hosts: localhost
+  become: true
+  roles:
+    - docker-mkdir
+

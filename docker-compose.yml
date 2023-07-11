@@ -16,7 +16,7 @@ services:
       - network
     ports:
       - 85:80
-      - 443:443
+      - 445:443
     restart: unless-stopped
 
   jellyfin:
@@ -219,18 +219,25 @@ services:
     container_name: gitlab
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://gitlab.example.com'
+        external_url 'https://gitlab.dancard32.com'
     # Add any other gitlab.rb configuration here, each on its own line
     networks:
       - network
     ports:
       - '80:80'
-      - '443:443'
-      - '22:22'
+      - '448:443'
+      - '2222:22'
     volumes:
-      - '$GITLAB_HOME/config:/etc/gitlab'
-      - '$GITLAB_HOME/logs:/var/log/gitlab'
-      - '$GITLAB_HOME/data:/var/opt/gitlab'
+      - type: bind
+        source: ~/appdata/gitlab_home/config
+        target: /etc/gitlab
+      - type: bind
+        source: ~/appdata/gitlab_home/logs
+        target: /var/log/gitlab
+      - type: bind
+        source: ~/appdata/gitlab_home/data
+        target: /var/opt/gitlab
+
     shm_size: '256m'
 
     restart: unless-stopped
