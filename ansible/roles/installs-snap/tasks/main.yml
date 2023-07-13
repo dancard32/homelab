@@ -3,5 +3,8 @@
 # Snap installs
   - name: (SNAP) Install General Tools
     community.general.snap:
-      name:
-        - kompose
+      name: "{{ item.name }}"
+      classic: "{{ item.classic }}"
+    with_items:
+      - {name: "kompose", classic: false}
+      - {name: "helm", classic: true}

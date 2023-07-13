@@ -1,0 +1,7 @@
+---
+
+- name: Deploy apps via HELM
+  hosts: nodes
+  become: true
+  roles:
+    - helm

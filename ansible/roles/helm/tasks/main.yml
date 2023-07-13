@@ -1,0 +1,12 @@
+- name: Deploy latest version of Prometheus chart inside monitoring namespace (and create it)
+  kubernetes.core.helm:
+    name: prometheus
+    chart_ref: stable/prometheus
+    release_namespace: monitoring
+    create_namespace: true
+
+- name: Deploy latest version of Grafana chart inside monitoring namespace with values
+  kubernetes.core.helm:
+    name: grafana
+    chart_ref: stable/grafana
+    release_namespace: monitoring
