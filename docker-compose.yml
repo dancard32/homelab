@@ -213,35 +213,6 @@ services:
       start_period: 40s
     restart: unless-stopped
 
-  gitlab:
-    image: 'gitlab/gitlab-ee:latest'
-    hostname: 'gitlab.dancard32.com'
-    container_name: gitlab
-    environment:
-      GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://gitlab.dancard32.com'
-    # Add any other gitlab.rb configuration here, each on its own line
-    networks:
-      - network
-    ports:
-      - '80:80'
-      - '448:443'
-      - '2222:22'
-    volumes:
-      - type: bind
-        source: ~/appdata/gitlab_home/config
-        target: /etc/gitlab
-      - type: bind
-        source: ~/appdata/gitlab_home/logs
-        target: /var/log/gitlab
-      - type: bind
-        source: ~/appdata/gitlab_home/data
-        target: /var/opt/gitlab
-
-    shm_size: '256m'
-
-    restart: unless-stopped
-
 # Statically setting the IP Gateway to prevent changing IP for cloudflare
 networks:
   network:
@@ -266,6 +237,36 @@ networks:
   #    - 53:53/tcp
   #    - 53:53/udp
   #   - 8081:80/tcp
+
+  # GITLAB IS TOO DEMANDING
+  #gitlab:
+  #  image: 'gitlab/gitlab-ee:latest'
+  #  hostname: 'gitlab.dancard32.com'
+  #  container_name: gitlab
+  #  environment:
+  #    GITLAB_OMNIBUS_CONFIG: |
+  #      external_url 'https://gitlab.dancard32.com'
+  #  # Add any other gitlab.rb configuration here, each on its own line
+  #  networks:
+  #    - network
+  #  ports:
+  #    - '80:80'
+  #    - '448:443'
+  #    - '2222:22'
+  #  volumes:
+  #    - type: bind
+  #      source: ~/appdata/gitlab_home/config
+  #      target: /etc/gitlab
+  #    - type: bind
+  #      source: ~/appdata/gitlab_home/logs
+  #      target: /var/log/gitlab
+  #    - type: bind
+  #      source: ~/appdata/gitlab_home/data
+  #      target: /var/opt/gitlab
+
+  #  shm_size: '256m'
+  #
+  #  restart: unless-stopped
 
   #  restart: unless-stopped
 

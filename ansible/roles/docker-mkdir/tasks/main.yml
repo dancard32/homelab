@@ -29,6 +29,6 @@
       - portainer
       - guacamole
       - dashy
-      - gitlab_home/config
-      - gitlab_home/logs
-      - gitlab_home/data
+      #- gitlab_home/config
+      #- gitlab_home/logs
+      #- gitlab_home/data
