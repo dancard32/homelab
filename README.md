@@ -82,9 +82,9 @@ Feel free to contribute to this project! Clone/Fork this repository and if you c
 ## License
 No license, I would like to keep this is open-source, I just wish for some acknowledgement if you heavily use this codebase in your work :)
 
-_p.s. If you somehow manage to make a significant amount of money you should..._
+However, I would greatly appreciate it if you were to ...
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/dancard32) _hehe_
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/dancard32) 
 
 ## Acknowledgements
 Show appreciation for and acknowledge the incredible help from the following community content creators:
