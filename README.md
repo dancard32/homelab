@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Dan Card](https://img.shields.io/static/v1?label=Dan32Card&message=profile&color=blue&logo=github)](https://github.com/dancard32)
+[![Dan Card](https://img.shields.io/static/v1?label=DanCard32&message=profile&color=blue&logo=github)](https://github.com/dancard32)
 [![stars - homelab](https://img.shields.io/github/stars/dancard32/homelab?style=social)](https://github.com/DanCard32/homelab)
 [![forks - homelab](https://img.shields.io/github/forks/dancard32/homelab?style=social)](https://github.com/dancard32/homelab)
 [![GitHub tag](https://img.shields.io/github/tag/dancard32/homelab?include_prereleases=&sort=semver)](https://github.com/DanCard32/homelab/releases/)
