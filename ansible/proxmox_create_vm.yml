@@ -9,6 +9,11 @@
     - name: vm_names_csv
       prompt: "Please specify the server names, separated by commas (NO SPACES)"
       private: false
+
+    - name: template
+      prompt: What template would you like to use?
+      private: false
+
   tasks:
     - set_fact:
         vm_names: "{{ vm_names_csv.split(',') }}"
@@ -18,7 +23,7 @@
         api_user: root@pam
         api_password: "{{ password }}"
         api_host: 192.168.122.20
-        clone: ubuntu-server
+        clone: "{{ template }}"
         name: "{{ item }}"
         node: proxmox
         storage: local-lvm
