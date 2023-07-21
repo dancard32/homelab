@@ -3,8 +3,11 @@
 # Snap installs
   - name: (SNAP) Install General Tools
     community.general.snap:
-      name: "{{ item.name }}"
-      classic: "{{ item.classic }}"
+      name: "{{ item }}"
     with_items:
-      - {name: "kompose", classic: false}
-      - {name: "helm", classic: true}
+      - "kompose"
+
+  - name: "Install helm"
+    command: snap install helm --classic
+    become: true
+    become_user: root
