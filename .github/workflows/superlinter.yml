@@ -3,11 +3,11 @@ name: Super-Linter
 on: push
 
 jobs:
-  super-linter:
-    name: Lint codebase
+  super-lint:
+    name: Lint code base
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout codebase
+      - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Run Super-Linter
