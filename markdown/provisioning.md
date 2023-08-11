@@ -1,13 +1,18 @@
 # Provisioning
-I have used Ansible to automate hardware provisioning to streamline deployment
+
+[Click Here](../README.md) to go back to the **README.md**
+
+---
+
+Prior to the deployment of VM's, docker containers, kubernetes clustering is the initial software dependencies set-up of the main server computer. In this case, I have used Ansible to automate hardware provisioning to streamline deployment
 
 - `vim` install via `sudo apt install -y vim`
 - `git` with ubuntu install via `sudo apt install -y git`
 - `pip` install via `sudo apt install -y python3-pip`
 - `ansible` install via `sudo python3 -m pip install -y ansible`
-    - Add `PATH=$PATH:$HOME/.local/bin` to `~/.bashrc` and `source`
-    - Add linting for syntax highlighting via `sudo pip install ansible-lint`
-    - Create `/etc/ansible/hosts` file and directory and populate with target installs
+  - Add `PATH=$PATH:$HOME/.local/bin` to `~/.bashrc` and `source`
+  - Add linting for syntax highlighting via `sudo pip install ansible-lint`
+  - Create `/etc/ansible/hosts` file and directory and populate with target installs
 
 Hardware provisioning on the local hardware can be completed with the following ansible playbook
 
@@ -18,4 +23,5 @@ If you would like to provision all the specified machines found in the `ansible/
     ansible-playbook hw_provisioning.yml -i inventory.ini -K
 
 ---
+
 [Click Here](../README.md) to go back to the **README.md**
