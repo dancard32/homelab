@@ -18,6 +18,12 @@ From applications list open Virtual Machine Manager and follow the following ste
    - At this point the VM can be converted to a template, step 6 to be repeated for _each_ VM
 6. To upload ISO Images navigate to local(proxmox) > ISO Images > upload and install VM's
 
+7. Create VM from the top-right and click through the system requirements.
+
+8. Lastly work through the specific OS install and after complete:
+
+   Install the following
+
    - Debian/Ubuntu systems install `sudo apt-get install -y qemu-guest-agent`
    - Redhat based systems install `yum install -y qemu-guest-agent`
 

@@ -77,11 +77,11 @@ Here you can find a detailed list of all the parts that I have in my homelab. If
 
 ## 3D Printed Parts
 
-**ADD LATER** BOM of 3D Printed Parts
+**ADD LATER** - Generate BOM from Fusion 360
 
 ## Assembling the Homelab
 
-**ADD later documentation and have CAD drawings of assembly**
+**ADD LATER** - Generate Assembly Manual from Fusion 360
 
 ---
 

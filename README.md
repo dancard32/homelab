@@ -22,7 +22,7 @@ Welcome to my homelab server repository! This project serves as a personal explo
 
 - [Getting Started](#installation)
   - [Building the Homelab](markdown/building.md)
-  - [Configuration](markdown/configuration.md)
+  - [Configuring Homelab](markdown/configuration.md)
   - [Bare Metal Provisioning](markdown/provisioning.md)
   - [Proxmox Set-up](markdown/proxmox.md)
   - [Kubernetes Set-up](markdown/k3s.md)
@@ -38,10 +38,11 @@ Welcome to my homelab server repository! This project serves as a personal explo
 To get started with the homelab server, first clone this repository (`git clone  https://github.com/dancard32/homelab.git`) and follow the steps below:
 
 - [Building the Homelab](markdown/building.md)
-- [Configuration](markdown/configuration.md)
+- [Configuring Homelab](markdown/configuration.md)
 - [Bare Metal Provisioning](markdown/provisioning.md)
 - [Proxmox Set-up](markdown/proxmox.md)
 - [Kubernetes Set-up](markdown/k3s.md)
+- [Deploying Kubernetes Pods](markdown/deploying_k3s.md)
 
 ## Usage
 
