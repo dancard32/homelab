@@ -14,7 +14,7 @@ This can be achieved with the following command
 >
 > /boot/cmdline.txt
 >
-> ```
+> ```bash
 > cgroup_memory=1 cgroup_enable=memory
 > ```
 >
