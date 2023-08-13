@@ -10,6 +10,8 @@ This can be achieved with the following command
 
     ansible-playbook k3s_install.yml -i inventory.ini -K
 
+Additionally,
+
 > **Note:** If Installing to ARM/Raspberry Pi, add the following
 >
 > /boot/cmdline.txt
