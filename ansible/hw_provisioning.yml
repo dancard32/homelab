@@ -1,5 +1,4 @@
 ---
-
 - name: Install pre-requisites on Bare Metal
   hosts: localhost
   become: true

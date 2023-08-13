@@ -1,5 +1,4 @@
 ---
-
 - name: Delete Proxmox VM's
   hosts: proxmox
   vars_prompt:
@@ -15,22 +14,22 @@
 
     - name: Stop VM with force
       proxmox_kvm:
-        api_user    : root@pam
+        api_user: root@pam
         api_password: "{{ password }}"
-        api_host    : 192.168.122.20
-        name        : "{{ item }}"
-        node        : proxmox
-        state       : stopped
-        force       : yes
+        api_host: 192.168.122.20
+        name: "{{ item }}"
+        node: proxmox
+        state: stopped
+        force: yes
         timeout: 50
       loop: "{{ vm_names }}"
 
     - name: Remove VM
       proxmox_kvm:
-        api_user    : root@pam
+        api_user: root@pam
         api_password: "{{ password }}"
-        api_host    : 192.168.122.20
-        name        : "{{ item }}"
-        node        : proxmox
-        state       : absent
+        api_host: 192.168.122.20
+        name: "{{ item }}"
+        node: proxmox
+        state: absent
       loop: "{{ vm_names }}"
