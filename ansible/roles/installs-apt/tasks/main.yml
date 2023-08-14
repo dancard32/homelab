@@ -2,7 +2,7 @@
 # General Homelab Tools
 - name: (APT) Install General Tools
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "{{ item }}"
   with_items:
     - net-tools

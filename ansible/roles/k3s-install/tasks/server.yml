@@ -48,7 +48,7 @@
   register: node_token
 
 - name: Store Master node-token
-  set_fact:
+  ansible.builtin.set_fact:
     token: "{{ node_token.content | b64decode | regex_replace('\n', '') }}"
 
 - name: Restore node-token file access

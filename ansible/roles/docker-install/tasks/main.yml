@@ -1,7 +1,7 @@
 ---
 # Docker Install
 - name: Docker - Install docker packages
-  apt:
+  ansible.builtin.apt:
     name: "{{ item }}"
     state: present
     update_cache: yes
@@ -14,21 +14,21 @@
     - docker
 
 - name: Docker - Add Docker s official GPG key
-  apt_key:
+  ansible.builtin.apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
   tags:
     - docker
 
 - name: Docker - Verify that we have the key with the fingerprint
-  apt_key:
+  ansible.builtin.apt_key:
     id: 0EBFCD88
     state: present
   tags:
     - docker
 
 - name: Docker - Set up the stable repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable
     state: present
     update_cache: yes
@@ -36,13 +36,13 @@
     - docker
 
 - name: Docker - Update apt packages
-  apt:
+  ansible.builtin.apt:
     update_cache: yes
   tags:
     - docker
 
 - name: Docker - Install docker
-  apt:
+  ansible.builtin.apt:
     name: docker-ce
     state: present
     update_cache: yes
@@ -50,7 +50,7 @@
     - docker
 
 - name: Docker - Add user to "docker" group
-  user:
+  ansible.builtin.user:
     name: "dcard"
     group: "docker"
     append: yes

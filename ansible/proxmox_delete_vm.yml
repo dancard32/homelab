@@ -9,7 +9,7 @@
       prompt: "Please specify the server names, separated by commas (NO SPACES)"
       private: false
   tasks:
-    - set_fact:
+    - ansible.builtin.set_fact:
         vm_names: "{{ vm_names_csv.split(',') }}"
 
     - name: Stop VM with force

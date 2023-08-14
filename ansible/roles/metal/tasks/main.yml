@@ -6,5 +6,5 @@
 
 # Proxmox dependencies
 - name: Install Proxmox Dependencies
-  apt:
+  ansible.builtin.apt:
     name: virt-manager

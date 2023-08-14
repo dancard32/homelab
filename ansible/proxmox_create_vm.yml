@@ -14,7 +14,7 @@
       private: false
 
   tasks:
-    - set_fact:
+    - ansible.builtin.set_fact:
         vm_names: "{{ vm_names_csv.split(',') }}"
 
     - name: Clone VM
