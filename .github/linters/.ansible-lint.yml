@@ -1,0 +1,47 @@
+---
+##########################
+##########################
+## Ansible Linter rules ##
+##########################
+##########################
+
+#############################
+# Exclude paths from linter #
+#############################
+# exclude_paths:
+
+########################
+# Make output parsable #
+########################
+parseable: true
+
+#######################
+# Set output to quiet #
+#######################
+quiet: true
+
+#####################
+# Path to rules dir #
+#####################
+# rulesdir:
+
+################
+# Tags to skip #
+################
+skip_list:
+  - 'load-failure' # Disable no such file or directory error
+
+##################
+# Tags to follow #
+##################
+# tags:
+
+#############
+# Use rules #
+#############
+use_default_rules: true
+
+#################
+# Set verbosity #
+#################
+verbosity: 1
