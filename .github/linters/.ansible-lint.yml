@@ -29,9 +29,11 @@ quiet: true
 # Tags to skip #
 ################
 skip_list:
+  - 'octal-values'
+  - 'no-changed-when' # False positives for running command shells
   - '204'  # Allow string length greater than 160 chars
 #  - 'empty-string-compare'  # Allow compare to empty string
-#  - 'no-changed-when'  # False positives for running command shells
+#  - 'no-changed-when'
 #  - 'command-instead-of-module'  # Allow git commands for push, add, etc...
 #  - 'command-instead-of-shell'  # Allow use of shell when you want
 #  - 'no-handler'  # Allow step to run like handler
