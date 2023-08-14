@@ -9,7 +9,8 @@
       prompt: "Please specify the server names, separated by commas (NO SPACES)"
       private: false
   tasks:
-    - ansible.builtin.set_fact:
+    - name: Get VM names
+      ansible.builtin.set_fact:
         vm_names: "{{ vm_names_csv.split(',') }}"
 
     - name: Stop VM with force
@@ -20,7 +21,7 @@
         name: "{{ item }}"
         node: proxmox
         state: stopped
-        force: yes
+        force: true
         timeout: 50
       loop: "{{ vm_names }}"
 
