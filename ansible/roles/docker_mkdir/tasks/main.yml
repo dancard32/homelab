@@ -1,13 +1,13 @@
 ---
 - name: Docker - Create $HOME/appdata directory
-  file:
+  ansible.builtin.file:
     path: "~/appdata"
     state: directory
     mode: "777"
   become: false
 
 - name: Docker - Create service config directories
-  file:
+  ansible.builtin.file:
     path: "~/appdata/{{ item }}"
     state: directory
     mode: "777"

@@ -4,19 +4,19 @@
   become: true
   connection: local
   roles:
-    - installs-apt
-    - installs-snap
-    - installs-pip
+    - installs_apt
+    - installs_snap
+    - installs_pip
     - metal
 
 - name: Install Docker on Bare Metal and Cluster
   hosts: k3s_cluster, localhost
   become: true
   roles:
-    - docker-install
+    - docker_install
 
 - name: Gerneate Docker container bind mounts
   hosts: localhost
   become: true
   roles:
-    - docker-mkdir
+    - docker_mkdir

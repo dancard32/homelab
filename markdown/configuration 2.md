@@ -12,7 +12,7 @@ Although I have created my own homelab to suit my own needs and practices, every
 
   Note that if you would like to use Cloudflare then you must create an `.env` file at the top-level of this directory specifying your Cloudflare API key.
 
-  Lastly, if persistent data is needed, add those directories to the `ansible/roles/docker-mkdir/tasks/main.yml` ansible role.
+  Lastly, if persistent data is needed, add those directories to the `ansible/roles/docker_mkdir/tasks/main.yml` ansible role.
 
 - Ansible:
 
