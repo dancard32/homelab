@@ -14,9 +14,9 @@ Additionally,
 
 > **Note:** If Installing to ARM/Raspberry Pi, add the following to `/boot/cmdline.txt`
 
-```bash
-cgroup_memory=1 cgroup_enable=memory
-```
+
+    cgroup_memory=1 cgroup_enable=memory
+
 
 Refer to [k3s-ansible/Issue on Rasbian x64 #179](https://github.com/k3s-io/k3s-ansible/issues/179)
 
