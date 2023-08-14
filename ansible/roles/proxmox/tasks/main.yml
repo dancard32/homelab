@@ -1,8 +1,8 @@
 ---
 - name: Install k3s on servers
-  ansible.builtin.include_tasks: server.yml
+  ansible.builtin.import_tasks: server.yml
   when: inventory_hostname in groups['servers']
 
 - name: Start VM
-  ansible.builtin.include_tasks: start_vm.yml
+  ansible.builtin.import_tasks: start_vm.yml
   when: inventory_hostname in groups['agents']
