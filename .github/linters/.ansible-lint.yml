@@ -40,12 +40,6 @@ skip_list:
 #  - 'unnamed-task' # Allow tasks without a name
 #  - 'yaml' # Disable YAML linting since it's done by yamllint
 
-################
-# Tags to warn #
-################
-warn_list:
-  - load-failure
-
 ##################
 # Tags to follow #
 ##################
