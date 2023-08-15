@@ -1,8 +1,8 @@
 ---
 - name: Install k3s on servers
-  ansible.builtin.import_tasks: /roles/k3s_install/tasks/server.yml # yamllint disable-line
+  ansible.builtin.import_tasks: server.yml # yamllint disable-line
   when: inventory_hostname in groups['servers']
 
 - name: Install k3s on nodes
-  ansible.builtin.import_tasks: /roles/k3s_install/tasks/node.yml # yamllint disable-line
+  ansible.builtin.import_tasks: node.yml # yamllint disable-line
   when: inventory_hostname in groups['nodes']
