@@ -19,22 +19,22 @@ Although I have created my own homelab to suit my own needs and practices, every
   All that is required for Ansible is a populated inventory list that will be used while running ansible playbooks. An example can be found below
 
   > **Example:** Inventory.ini
-  >
-  > ```
-  > [proxmox]
-  >
-  > [servers]
-  > IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
-  >
-  > [nodes]
-  > IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
-  > IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
-  > IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
-  >
-  > [k3s_cluster:children]
-  > servers
-  > nodes
-  > ```
+
+      [proxmox]
+      IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
+
+      [servers]
+      IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
+
+      [nodes]
+      IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
+      IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
+      IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
+
+      [k3s_cluster:children]
+      servers
+      nodes
+
 
 - Kubernetes Services
 
