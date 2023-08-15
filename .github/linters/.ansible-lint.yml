@@ -9,8 +9,8 @@
 # Exclude paths from linter #
 #############################
 exclude_paths:
-  - k3s_install/*
-  - proxmox/*
+  - ../../ansible/roles/k3s_install/*
+  - ../../ansible/roles/proxmox/*
 
 ########################
 # Make output parsable #
