@@ -19,7 +19,7 @@
     dest: "{{ systemd_dir }}/k3s-server.service"
     owner: root
     group: root
-    mode: 0644
+    mode: 0644 # yamllint disable-line
 
 - name: Enable and check K3s-server service
   ansible.builtin.systemd:
