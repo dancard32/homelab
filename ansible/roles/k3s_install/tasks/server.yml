@@ -24,9 +24,9 @@
 - name: Enable and check K3s-server service
   ansible.builtin.systemd:
     name: k3s-server
-    daemon_reload: yes
+    daemon_reload: true
     state: restarted
-    enabled: yes
+    enabled: true
 
 - name: Wait for node-token
   ansible.builtin.wait_for:

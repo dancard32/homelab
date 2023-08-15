@@ -10,6 +10,6 @@
 - name: Enable and check K3s-node service
   ansible.builtin.systemd:
     name: k3s-node
-    daemon_reload: yes
+    daemon_reload: true
     state: restarted
-    enabled: yes
+    enabled: true
