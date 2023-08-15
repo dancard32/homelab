@@ -1,5 +1,4 @@
 ---
-
 - name: Clone Proxmox VM
   hosts: proxmox
   vars_prompt:
@@ -15,7 +14,8 @@
       private: false
 
   tasks:
-    - set_fact:
+    - name: Get VM names
+      ansible.builtin.set_fact:
         vm_names: "{{ vm_names_csv.split(',') }}"
 
     - name: Clone VM
@@ -30,7 +30,6 @@
         format: qcow2
         timeout: 500
       loop: "{{ vm_names }}"
-
 
     - name: Pause for 5 seconds before starting
       ansible.builtin.pause:

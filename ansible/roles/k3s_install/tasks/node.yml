@@ -1,15 +1,15 @@
 ---
 - name: Copy K3s node template file
-  template:
+  ansible.builtin.template:
     src: "k3s.node.j2"
     dest: "{{ systemd_dir }}/k3s-node.service"
     owner: root
     group: root
-    mode: 0755
+    mode: 0755 # yamllint disable-line
 
 - name: Enable and check K3s-node service
-  systemd:
+  ansible.builtin.systemd:
     name: k3s-node
-    daemon_reload: yes
+    daemon_reload: true
     state: restarted
-    enabled: yes
+    enabled: true

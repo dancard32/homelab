@@ -12,29 +12,29 @@ Although I have created my own homelab to suit my own needs and practices, every
 
   Note that if you would like to use Cloudflare then you must create an `.env` file at the top-level of this directory specifying your Cloudflare API key.
 
-  Lastly, if persistent data is needed, add those directories to the `ansible/roles/docker-mkdir/tasks/main.yml` ansible role.
+  Lastly, if persistent data is needed, add those directories to the `ansible/roles/docker_mkdir/tasks/main.yml` ansible role.
 
 - Ansible:
 
   All that is required for Ansible is a populated inventory list that will be used while running ansible playbooks. An example can be found below
 
   > **Example:** Inventory.ini
-  >
-  > ```
-  > [proxmox]
-  >
-  > [servers]
-  > IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
-  >
-  > [nodes]
-  > IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
-  > IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
-  > IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
-  >
-  > [k3s_cluster:children]
-  > servers
-  > nodes
-  > ```
+
+      [proxmox]
+      IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
+
+      [servers]
+      IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
+
+      [nodes]
+      IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
+      IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
+      IP4_ADDRESS ansible_ssh_user=user ansible_ssh_pass=password
+
+      [k3s_cluster:children]
+      servers
+      nodes
+
 
 - Kubernetes Services
 

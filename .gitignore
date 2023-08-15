@@ -2,3 +2,4 @@
 .secrets/
 .env
 .ansible/inventory.ini
+.ansible/.ansible-lint

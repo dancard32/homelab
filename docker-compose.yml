@@ -206,7 +206,7 @@ services:
     ports:
       - 4000:80
     healthcheck:
-      test: ['CMD', 'node', '/app/services/healthcheck']
+      test: ["CMD", "node", "/app/services/healthcheck"]
       interval: 1m30s
       timeout: 10s
       retries: 3
@@ -221,7 +221,6 @@ networks:
       config:
         - subnet: 172.21.255.0/24
           gateway: 172.21.255.1
-
 
   #pihole:
   #  image: pihole/pihole:latest

@@ -1,5 +1,4 @@
 ---
-
 - name: Deploy apps via HELM
   hosts: servers
   become: true

@@ -1,0 +1,14 @@
+---
+# General Homelab Tools
+- name: (APT) Install General Tools
+  become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+  with_items:
+    - net-tools
+    - lm-sensors # Used to monitor computer temperatures
+    - powertop # `sudo powertop` displays metrics about computer usage
+    - openssh-server # To allow remote SSH
+    - sshpass
+    - hardinfo # This is the linux equivalent to device manager - run hardinfo in terminal
+    - ethtool # Used for network debugging
