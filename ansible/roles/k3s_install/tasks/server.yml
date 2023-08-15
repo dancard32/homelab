@@ -6,7 +6,7 @@
   failed_when: false
 
 - name: Clean previous runs of k3s-init
-  ansible.builtin.command: systemctl reset-failed k3s-init
+  ansible.builtin.command: systemctl reset-failed k3s-init # yamllint disable-line
   failed_when: false
   changed_when: false
  # args: # yamllint disable-line
