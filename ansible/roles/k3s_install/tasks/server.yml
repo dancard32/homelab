@@ -9,8 +9,9 @@
   ansible.builtin.command: systemctl reset-failed k3s-init
   failed_when: false
   changed_when: false
-  args:
-    warn: false # The ansible systemd module does not support reset-failed
+  args: # yamllint disable-line
+    warn: false # yamllint disable-line
+    # The ansible systemd module does not support reset-failed
 
 - name: Copy K3s server template file
   register: k3s_service
