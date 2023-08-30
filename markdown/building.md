@@ -76,8 +76,31 @@ Here you can find a detailed list of all the parts that I have in my homelab. If
   - [4pcs x 100mm T Slot 2020 Aluminum Extrusion](https://www.amazon.com/gp/product/B08TBLBXLV/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&th=1)
 
 ## 3D Printed Parts
+If you would like to 3D print these parts on your own, below are the specified `.stl` files that you will need to print.
 
-**ADD LATER** - Generate BOM from Fusion 360
+> **Note**: For the spacing and sizing to be correct, you **MUST** change the rack orientation such that the vertical mount rails are as far spaced as possible. This will require the disassembly of server rack and re-assembly prior to installing the printed parts. Even after this I **cannot** guarantee the spacing will line up for your specific part/server. *Future work will be made to require no user end modifications.*
+
+- **Main Server Build**:
+  - `CAD/4U ENCLOSURE_FRONT.stl`
+  - `CAD/4U MINI_ITX_ENCLOSURE.stl`
+  - `CAD/4U NIC_PCIE_BRACKET.stl`
+  - `CAD/MINI_ITX_MOUNT.stl`, quantity x2
+
+- **Networking**
+  - **NICGIGA 2.5Gbe 5-port switch**: `CAD/1U NICGIGGA_5PORT_SWITCH.stl`
+  - **Netgear 1Gbe 62W POE switch**: `CAD/1U NETGEAR_8PORT_SWITCH.stl`
+
+- **Raspberry Pi 4 Model B Cluster**: `CAD/1U RPI_CLUSTER_RACK.stl`
+
+- **Home Automation/IoT**: `CAD/1U HOME_ASSISTANT.stl`
+- **UPS**:
+  - Support for Aluminum Extrusions:
+    - `CAD/AL_EX_SUPPORT_LEG_LEFT.stl`
+    - `CAD/AL_EX_SUPPORT_LEG_RIGHT.stl`
+  - Mounting UPS:
+    - `CAD/UPS_SUPPORT_LEFT.stl`
+    - `CAD/UPS_SUPPORT_RIGHT.stl`
+    - `CAD/UPS_TOP_BRACKET.stl`
 
 ## Assembling the Homelab
 
