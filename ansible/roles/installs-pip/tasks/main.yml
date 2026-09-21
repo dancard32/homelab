@@ -1,6 +1,0 @@
-# python pip installs
-  - name: (PIP) Install General Tools
-    ansible.builtin.pip:
-      name:
-        - proxmoxer
-        - netaddr

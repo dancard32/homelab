@@ -1,11 +1,10 @@
 ---
-
 # Set-up Homelab Tools
-  # sudo apt-get install lm-sensors
-  # sudo sensors-detect
-  # sensors
+# sudo apt-get install lm-sensors
+# sudo sensors-detect
+# sensors
 
 # Proxmox dependencies
-  - name: Install Proxmox Dependencies
-    apt:
-      name: virt-manager
+- name: Install Proxmox Dependencies
+  ansible.builtin.apt:
+    name: virt-manager

@@ -1,0 +1,69 @@
+---
+# Docker Install
+- name: Docker - Install docker packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+  tags:
+    - docker
+
+- name: Docker - Add Docker s official GPG key
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  tags:
+    - docker
+
+- name: Docker - Verify that we have the key with the fingerprint
+  ansible.builtin.apt_key:
+    id: 0EBFCD88
+    state: present
+  tags:
+    - docker
+
+- name: Docker - Set up the stable repository
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable
+    state: present
+    update_cache: true
+  tags:
+    - docker
+
+- name: Docker - Update apt packages
+  ansible.builtin.apt:
+    update_cache: true
+  tags:
+    - docker
+
+- name: Docker - Install docker
+  ansible.builtin.apt:
+    name: docker-ce
+    state: present
+    update_cache: true
+  tags:
+    - docker
+
+- name: Docker - Add user to "docker" group
+  ansible.builtin.user:
+    name: "dcard"
+    group: "docker"
+    append: true
+  tags:
+    - docker
+# - name: Docker - Install docker-compose
+#  ansible.builtin.get_url:
+#    url : https://github.com/docker/compose/releases/download/1.25.1-rc1/docker-compose-Linux-x86_64
+#    dest: /usr/local/bin/docker-compose
+#    mode: 'u+x,g+x'
+
+# - name: Homelab - Adjusting for Docker Service Start-up
+#  ansible.builtin.systemd:
+#    name: systemd-resolved
+#    state: stopped
+#    enabled: false

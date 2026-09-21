@@ -3,3 +3,4 @@
 .env
 .ansible/inventory.ini
 *server-files
+.ansible/.ansible-lint
